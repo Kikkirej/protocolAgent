@@ -46,7 +46,36 @@ public final class PropertyManager {
 	 * Supported Keys are in {@link PropertyKeys}.
 	 * @param propertyKey a Key to define the property
 	 */
-	public void getProperty(String propertyKey){
+	public String getProperty(String propertyKey){
+		checkLoadStatusAndLoadProperties();
+		String readPropertiesForKey;
+		try {
+			readPropertiesForKey = readPropertiesForKey(propertyKey);
+			return readPropertiesForKey;
+		} catch (PropertiesNotFoundOrCorruptException e) {
+			System.exit(1);
+		}
+		return "";
+	}
+
+	private String readPropertiesForKey(String propertyKey) throws PropertiesNotFoundOrCorruptException {
+		String property = properties.getProperty(propertyKey);
+		if(property == null){
+			throw new PropertiesNotFoundOrCorruptException();
+		}
+		else{
+			return property;
+		}
+	}
+
+	private void checkLoadStatusAndLoadProperties() {
+		if(!propertiesLoaded){
+			loadProperties();
+		}
+	}
+
+	private void loadProperties() {
+		// TODO Hier sollen die Properties geladen werden.
 		
 	}
 }

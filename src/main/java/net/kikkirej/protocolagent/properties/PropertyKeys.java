@@ -21,4 +21,6 @@ public class PropertyKeys {
 	public static final String SAVEBUTTONTEXT = "saveButton";
 	
 	public static final String FRAMETITLE = "frameTitle";
+	
+	public static final String DATEFORMAT = "dateFormat";
 }

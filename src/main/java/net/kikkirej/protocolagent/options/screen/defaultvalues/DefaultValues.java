@@ -13,6 +13,7 @@ public class DefaultValues {
 	private void fillHashMap() {
 		hashMap.put("$CurrentUser", new DefaultValueCurrentUser());
 		hashMap.put("$CurrentDateTime", new DefaultValueCurrentDateTime());
+		hashMap.put("$CurrentLanguage", new DefaultValueCurrentLanguage());
 	}
 	
 	public String get(String key){

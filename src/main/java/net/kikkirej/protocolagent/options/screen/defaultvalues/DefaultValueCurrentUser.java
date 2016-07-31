@@ -5,7 +5,7 @@ public class DefaultValueCurrentUser implements IDefaultValue{
 	@Override
 	public String getDefaultValue(String Key) {
 
-		return "wagner";
+		return System.getProperty("user.name");
 	}
 
 }

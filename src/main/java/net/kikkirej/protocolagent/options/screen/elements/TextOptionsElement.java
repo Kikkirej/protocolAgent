@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import net.kikkirej.protocolagent.options.Value;
+import net.kikkirej.protocolagent.options.screen.listener.OptionElementChangedListener;
 
 public class TextOptionsElement extends OptionsElement {
 
@@ -19,7 +20,12 @@ public class TextOptionsElement extends OptionsElement {
 		
 		frame.add(label);
 		frame.add(jTextField);
-		return null;
+		Value value = new Value(defaultValue, name);
+		
+		jTextField.getDocument().addDocumentListener(new OptionElementChangedListener(value, jTextField));
+		
+		value.setNeededValue(isNeeded);
+		return value;
 	}
 
 	@Override

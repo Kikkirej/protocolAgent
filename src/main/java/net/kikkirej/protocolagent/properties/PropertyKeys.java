@@ -23,4 +23,6 @@ public class PropertyKeys {
 	public static final String FRAMETITLE = "frameTitle";
 	
 	public static final String DATEFORMAT = "dateFormat";
+	
+	public static final String PATHTOSAVEDLOGS= "pathToSavedLogs";
 }

@@ -3,10 +3,12 @@ package net.kikkirej.protocolagent.options;
 public class Value {
 	private String fieldName;
 	private String value;
+	private Boolean neededValue;
 	
 	public Value(String value, String fieldName){
 		this.value = value;
 		this.fieldName = fieldName;
+		this.setNeededValue(false);
 	}
 
 	public String getValue() {
@@ -19,6 +21,14 @@ public class Value {
 
 	public String getFieldName() {
 		return fieldName;
+	}
+
+	public Boolean getNeededValue() {
+		return neededValue;
+	}
+
+	public void setNeededValue(Boolean neededValue) {
+		this.neededValue = neededValue;
 	}
 	
 }

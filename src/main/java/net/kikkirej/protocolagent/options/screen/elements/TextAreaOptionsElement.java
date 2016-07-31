@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import net.kikkirej.protocolagent.options.Value;
+import net.kikkirej.protocolagent.options.screen.listener.OptionElementChangedListener;
 
 public class TextAreaOptionsElement extends OptionsElement {
 
@@ -20,7 +21,13 @@ public class TextAreaOptionsElement extends OptionsElement {
 		//jTextArea.setWrapStyleWord(true);
 		frame.add(label);
 		frame.add(jTextArea);
-		return null;
+		Value value = new Value(defaultValue, name);
+		
+		jTextArea.getDocument().addDocumentListener(new OptionElementChangedListener(value, jTextArea));
+
+		value.setNeededValue(isNeeded);
+
+		return value;
 	}
 
 	@Override

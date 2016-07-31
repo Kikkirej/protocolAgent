@@ -1,17 +1,30 @@
 package net.kikkirej.protocolagent;
 
+import net.kikkirej.protocolagent.options.screen.OptionsScreen;
+import net.kikkirej.protocolagent.properties.PropertyManager;
+
 public class ProtocolAgent {
 
 	/**
 	 * Main-Method, here starts everything.
-	 * @param args User-Arguments.(Supported Argument is the Path to the .ini.
+	 * <b>Flags</b>
+	 * -c [Path]	Settings
+	 * -h			Help
+	 * @param args User-Arguments.(Supported Argument is the Path to the *.ini.)
 	 */
 	public static void main(String[] args) {
-		new ProtocolAgent().initalize(args);
+		if(args.length > 0){
+			new ProtocolAgent().initalize(args);
+		}
+		new OptionsScreen();
 	}
 
 	private void initalize(String[] args) {
-		
+		if(args[0].equals("-c")){
+			PropertyManager propertyManager = PropertyManager.getInstance();
+			propertyManager.setPropertyPath(args[1]);
+		} else if(args[0].equals("-h")){
+			//TODO implement help Dialog...
+		}
 	}
-
 }

@@ -1,5 +1,6 @@
 package net.kikkirej.protocolagent.properties;
 
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -17,10 +18,9 @@ public final class PropertyManager {
 	 * Defines whether the Properties has been loaded initally.
 	 */
 	private Boolean propertiesLoaded;
-	/**
-	 * Pfad zur aktuell definierten Properties-Datei im File-System.
-	 */
-	private String pathToProperties;
+	private String propertiesPath;
+	private PropertyFile propertyFile;
+	
 	/**
 	 * Constructor, 
 	 * generates new PropertiesObject
@@ -30,6 +30,8 @@ public final class PropertyManager {
 	private PropertyManager() {
 		properties = new Properties();
 		propertiesLoaded = false;
+		propertiesPath = "properties.ini";
+		propertyFile = new PropertyFile(propertiesPath);
 	}
 	
 	/**
@@ -42,40 +44,38 @@ public final class PropertyManager {
 		}
 		return instance;
 	}
-	/**
-	 * Supported Keys are in {@link PropertyKeys}.
-	 * @param propertyKey a Key to define the property
-	 */
-	public String getProperty(String propertyKey){
-		checkLoadStatusAndLoadProperties();
-		String readPropertiesForKey;
-		try {
-			readPropertiesForKey = readPropertiesForKey(propertyKey);
-			return readPropertiesForKey;
-		} catch (PropertiesNotFoundOrCorruptException e) {
-			System.exit(1);
-		}
-		return "";
+	
+	public String get(String key){
+		loadPropertiesIfNotLoaded();
+		return properties.getProperty(key, "");
 	}
 
-	private String readPropertiesForKey(String propertyKey) throws PropertiesNotFoundOrCorruptException {
-		String property = properties.getProperty(propertyKey);
-		if(property == null){
-			throw new PropertiesNotFoundOrCorruptException();
-		}
-		else{
-			return property;
-		}
-	}
-
-	private void checkLoadStatusAndLoadProperties() {
+	private void loadPropertiesIfNotLoaded() {
 		if(!propertiesLoaded){
-			loadProperties();
+			try {
+				properties = propertyFile.loadProperties();
+				propertiesLoaded = true;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
-
-	private void loadProperties() {
-		// TODO Hier sollen die Properties geladen werden.
-		
+	
+	public void setPropertyPath(String propertiesPath){
+		this.propertiesPath = propertiesPath;
+		this.propertyFile = new PropertyFile(this.propertiesPath);
+		try {
+			properties = propertyFile.loadProperties();
+			propertiesLoaded= true;
+		} catch (IOException e) {
+			try {
+				this.propertyFile = PropertyFile.initFile(propertiesPath);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
+	
 }

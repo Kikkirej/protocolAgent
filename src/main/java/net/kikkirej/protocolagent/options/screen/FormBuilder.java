@@ -48,6 +48,7 @@ public class FormBuilder {
 		JButton saveButton = new JButton(saveButtonText);
 		saveButton.setToolTipText("Save");
 		saveButton.addActionListener(new SaveEvent(values));
+		frame.add(saveButton);
 	}
 
 	private Value[] fillOptionsElementsInFrame(OptionsElement[] optionsElements) {

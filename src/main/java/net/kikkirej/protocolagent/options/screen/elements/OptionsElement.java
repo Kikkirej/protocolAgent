@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import net.kikkirej.protocolagent.options.Value;
+import net.kikkirej.protocolagent.options.screen.defaultvalues.DefaultValues;
 
 public abstract class OptionsElement {
 
@@ -35,7 +36,7 @@ public abstract class OptionsElement {
 	}
 	
 	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
+		this.defaultValue = new DefaultValues().get(defaultValue);
 	}
 	
 	public void setNeeded(Boolean isNeeded) {

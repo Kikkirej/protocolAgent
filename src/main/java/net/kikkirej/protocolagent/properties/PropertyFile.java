@@ -35,7 +35,7 @@ public class PropertyFile extends File {
 	}
 	
 	public static PropertyFile initFile(String pathToFile) throws IOException{
-		URL resource = PropertyFile.class.getResource("/net/kikkirej/protocolagent/properties/standardProperties.ini");
+		URL resource = PropertyFile.class.getResource("/net/kikkirej/protocolagent/properties/propertiesModel.ini");
 		String filePath = resource.getFile();
 		PropertyFile propertyTemplateFile = new PropertyFile(filePath);
 		PropertyFile propertyFile = new PropertyFile(pathToFile);
@@ -43,10 +43,19 @@ public class PropertyFile extends File {
 		return propertyFile;
 	}
 	
+	@Deprecated
 	public Properties loadProperties() throws IOException{
 		Properties properties = new Properties();
+		return loadProperties(properties);
+	}
+	
+	public Properties loadProperties(Properties oldProperties) throws IOException{
+		Properties newProperties = new Properties();
 		FileReader fileReader = new FileReader(this);
-		properties.load(fileReader);
-		return properties;
+		newProperties.load(fileReader);
+		Properties mergedProperties = new Properties();
+		mergedProperties.putAll(oldProperties);
+		mergedProperties.putAll(newProperties);		
+		return mergedProperties;
 	}
 }

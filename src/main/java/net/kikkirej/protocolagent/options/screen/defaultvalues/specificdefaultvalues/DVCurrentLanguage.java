@@ -4,7 +4,7 @@ import java.util.Locale;
 
 import net.kikkirej.protocolagent.options.screen.defaultvalues.IDefaultValue;
 
-public class DefaultValueCurrentLanguage implements IDefaultValue{
+public class DVCurrentLanguage implements IDefaultValue{
 
 	@Override
 	public String getDefaultValue(String Key) {

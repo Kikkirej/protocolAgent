@@ -2,11 +2,11 @@ package net.kikkirej.protocolagent.options.screen.defaultvalues;
 
 import java.util.HashMap;
 
-import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DefaultValueCurrentDate;
-import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DefaultValueCurrentDateTime;
-import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DefaultValueCurrentLanguage;
-import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DefaultValueCurrentTime;
-import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DefaultValueCurrentUser;
+import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DVCurrentDate;
+import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DVCurrentDateTime;
+import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DVCurrentLanguage;
+import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DVCurrentTime;
+import net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues.DVCurrentUser;
 
 public class DefaultValues {
 	private HashMap<String, IDefaultValue> hashMap;
@@ -17,11 +17,11 @@ public class DefaultValues {
 	}
 
 	private void fillHashMap() {
-		hashMap.put("$CurrentUser", new DefaultValueCurrentUser());
-		hashMap.put("$CurrentDateTime", new DefaultValueCurrentDateTime());
-		hashMap.put("$CurrentDate", new DefaultValueCurrentDate());
-		hashMap.put("$CurrentTime", new DefaultValueCurrentTime());
-		hashMap.put("$CurrentLanguage", new DefaultValueCurrentLanguage());
+		hashMap.put("$CurrentUser", new DVCurrentUser());
+		hashMap.put("$CurrentDateTime", new DVCurrentDateTime());
+		hashMap.put("$CurrentDate", new DVCurrentDate());
+		hashMap.put("$CurrentTime", new DVCurrentTime());
+		hashMap.put("$CurrentLanguage", new DVCurrentLanguage());
 	}
 	
 	public String get(String key){

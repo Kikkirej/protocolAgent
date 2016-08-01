@@ -3,7 +3,7 @@ package net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultv
 import net.kikkirej.protocolagent.options.screen.defaultvalues.DVAbstractDateTime;
 import net.kikkirej.protocolagent.properties.PropertyKeys;
 
-public class DefaultValueCurrentDate extends DVAbstractDateTime {
+public class DVCurrentDate extends DVAbstractDateTime {
 
 	@Override
 	protected String getFormat() {

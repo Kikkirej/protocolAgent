@@ -1,6 +1,7 @@
 package net.kikkirej.protocolagent.properties;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -32,8 +33,18 @@ public final class PropertyManager {
 		propertiesLoaded = false;
 		propertiesPath = "properties.ini";
 		propertyFile = new PropertyFile(propertiesPath);
+		loadDefaultProperties();
 	}
 	
+	private void loadDefaultProperties() {
+		try {
+			URL defaultPropertyFile = PropertyManager.class.getResource("/net/kikkirej/protocolagent/properties/defaultProperties.ini");
+			properties = new PropertyFile(defaultPropertyFile.getFile()).loadProperties(properties);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * Returns the only possible instance of {@link PropertyManager}
 	 * @return instance of {@link PropertyManager}
@@ -53,7 +64,7 @@ public final class PropertyManager {
 	private void loadPropertiesIfNotLoaded() {
 		if(!propertiesLoaded){
 			try {
-				properties = propertyFile.loadProperties();
+				properties = propertyFile.loadProperties(properties);
 				propertiesLoaded = true;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -66,7 +77,7 @@ public final class PropertyManager {
 		this.propertiesPath = propertiesPath;
 		this.propertyFile = new PropertyFile(this.propertiesPath);
 		try {
-			properties = propertyFile.loadProperties();
+			properties = propertyFile.loadProperties(properties);
 			propertiesLoaded= true;
 		} catch (IOException e) {
 			try {

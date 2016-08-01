@@ -32,7 +32,9 @@ public class FormBuilder {
 		this.frame = frame;
 		
 	}
-
+	/**
+	 * fills the frame
+	 */
 	public void build() {
 		OptionsElement[] optionsElements = getOptionsElements();
 		Value valueCategoryField = initCategoryField();
@@ -95,6 +97,10 @@ public class FormBuilder {
 		}
 	}
 
+	/**
+	 * loads the elements
+	 * @return
+	 */
 	private OptionsElement[] getOptionsElements() {
 		propertyManager = PropertyManager.getInstance();
 		String allFieldsAndArts = propertyManager.get(PropertyKeys.ALLFIELDSANDARTS);

@@ -12,6 +12,13 @@ public class OptionsScreen {
 	private PropertyManager propertyManager;
 
 	public OptionsScreen(){
+		createsFrame();
+	}
+	
+	/**
+	 * creates the frame
+	 */
+	private void createsFrame() {
 		propertyManager = PropertyManager.getInstance();
 		frame = createFrame();
 		fillFrame();

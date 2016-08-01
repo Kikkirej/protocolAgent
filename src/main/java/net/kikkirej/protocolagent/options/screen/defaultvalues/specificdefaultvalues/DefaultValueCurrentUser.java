@@ -1,4 +1,6 @@
-package net.kikkirej.protocolagent.options.screen.defaultvalues;
+package net.kikkirej.protocolagent.options.screen.defaultvalues.specificdefaultvalues;
+
+import net.kikkirej.protocolagent.options.screen.defaultvalues.IDefaultValue;
 
 public class DefaultValueCurrentUser implements IDefaultValue{
 

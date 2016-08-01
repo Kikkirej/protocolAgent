@@ -24,5 +24,7 @@ public class PropertyKeys {
 	
 	public static final String DATEFORMAT = "dateFormat";
 	
+	public static final String TIMEFORMAT = "timeFormat";
+	
 	public static final String PATHTOSAVEDLOGS= "pathToSavedLogs";
 }

@@ -65,6 +65,7 @@ public class FormBuilder {
 		JComboBox<String> comboBox = new JComboBox<>();
 		fillComboBox(comboBox);
 		Value value = new Value("", categoryLabel);
+		value.setNeededValue(true);
 		comboBox.addActionListener(new CategoryChangedListener(comboBox, value));
 		frame.add(label);
 		frame.add(comboBox);

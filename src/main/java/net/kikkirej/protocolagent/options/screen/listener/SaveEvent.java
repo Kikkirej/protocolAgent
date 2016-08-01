@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import net.kikkirej.protocolagent.options.Value;
 import net.kikkirej.protocolagent.options.csv.CSVUtil;
 
@@ -19,11 +21,32 @@ public class SaveEvent implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String allNeededValuesFilled = allNeededValuesFilled(values);
+		if(allNeededValuesFilled == null){
+			writeToFile();
+			System.exit(0);
+		}else{
+			JOptionPane.showMessageDialog(null, "The Value of the field " +allNeededValuesFilled +" must not be emtpy." , "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	private void writeToFile() {
 		csvUtil = new CSVUtil();
 			try {
 				csvUtil.writeValue(values);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+	}
+	
+	private String allNeededValuesFilled(Value[] values) {
+		for (int i = 0; i < values.length; i++) {
+			if(values[i].getNeededValue()){
+				if(values[i].getValue().isEmpty()){
+					return values[i].getFieldName();
+				}
+			}
+		}
+		return null;
 	}
 }

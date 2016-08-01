@@ -1,8 +1,5 @@
 package net.kikkirej.protocolagent.options.screen.listener;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;

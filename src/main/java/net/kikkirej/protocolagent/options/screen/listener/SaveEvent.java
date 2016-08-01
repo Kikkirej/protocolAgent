@@ -40,10 +40,10 @@ public class SaveEvent implements ActionListener {
 	}
 	
 	private String allNeededValuesFilled(Value[] values) {
-		for (int i = 0; i < values.length; i++) {
-			if(values[i].getNeededValue()){
-				if(values[i].getValue().isEmpty()){
-					return values[i].getFieldName();
+		for (Value v : values) {
+			if(v.isNeededValue()){
+				if(v.getValue().isEmpty()){
+					return v.getFieldName();
 				}
 			}
 		}

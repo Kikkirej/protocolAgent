@@ -23,7 +23,7 @@ public class Value {
 		return fieldName;
 	}
 
-	public Boolean getNeededValue() {
+	public Boolean isNeededValue() {
 		return neededValue;
 	}
 

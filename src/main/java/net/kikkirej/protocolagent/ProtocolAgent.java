@@ -1,5 +1,6 @@
 package net.kikkirej.protocolagent;
 
+import net.kikkirej.protocolagent.flags.FlagInterpreter;
 import net.kikkirej.protocolagent.options.screen.OptionsScreen;
 import net.kikkirej.protocolagent.properties.PropertyManager;
 
@@ -14,9 +15,11 @@ public class ProtocolAgent {
 	 */
 	public static void main(String[] args) {
 		if(args.length > 0){
-			new ProtocolAgent().initalize(args);
+			FlagInterpreter flagInterpreter = new FlagInterpreter();
+			flagInterpreter.interpretArgs(args);
+		}else{
+			new OptionsScreen();
 		}
-		new OptionsScreen();
 	}
 
 	private void initalize(String[] args) {
@@ -27,4 +30,5 @@ public class ProtocolAgent {
 			//TODO implement help Dialog...
 		}
 	}
+	
 }

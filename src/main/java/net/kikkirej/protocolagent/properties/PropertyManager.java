@@ -60,7 +60,12 @@ public final class PropertyManager {
 		loadPropertiesIfNotLoaded();
 		return properties.getProperty(key, "");
 	}
-
+	
+	public void set(String key, String value){
+		loadPropertiesIfNotLoaded();
+		properties.setProperty(key, value);
+	}
+	
 	private void loadPropertiesIfNotLoaded() {
 		if(!propertiesLoaded){
 			try {

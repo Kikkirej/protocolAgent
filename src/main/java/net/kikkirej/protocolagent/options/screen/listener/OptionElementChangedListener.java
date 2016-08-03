@@ -33,5 +33,4 @@ public class OptionElementChangedListener implements DocumentListener {
 		value.setValue(wert.getText());
 		
 	}
-
 }

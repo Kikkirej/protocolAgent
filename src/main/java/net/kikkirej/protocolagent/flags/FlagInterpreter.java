@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import net.kikkirej.protocolagent.flags.flagactions.ConfFlagAction;
+import net.kikkirej.protocolagent.flags.flagactions.HelpFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.IFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.NullFlagAction;
+import net.kikkirej.protocolagent.flags.flagactions.ValueFlagAction;
 
 public class FlagInterpreter {
 	private static final String REGEXFLAG = "[-,/][a-z,A-Z]";
@@ -27,16 +29,16 @@ public class FlagInterpreter {
 		return arrayList;
 	}
 
-	private Flag getSpecificOption(String[] args, int i) {
+	private Flag getSpecificOption(String[] args, int index) {
 		Flag flag = new Flag();
-		flag.setFlagname(args[i].substring(1, args[i].length()));
+		flag.setFlagname(args[index].substring(1, args[index].length()));
 		String flagvalue="";
-		for (int j = i+1; j < args.length-(i); j++) {
+		for (int j = index+1; j < args.length; j++) {
 			if(!args[j].matches(REGEXFLAG)){
-				flagvalue += args[j];
+				flagvalue += args[j]+ " ";
 			}
 			else{
-				flag.setFlagvalue(flagvalue);
+				flag.setFlagvalue(flagvalue.substring(0, flagvalue.length()-1));
 				return flag;
 			}
 		}
@@ -47,11 +49,14 @@ public class FlagInterpreter {
 	private HashMap<String, IFlagAction> fillHashMap() {
 		HashMap<String, IFlagAction> flagActions = new HashMap<>();
 		flagActions.put("c", new ConfFlagAction());
+		flagActions.put("h", new HelpFlagAction());
+		flagActions.put("v", new ValueFlagAction());
 		return flagActions;
 	}
 
 	private void executeFlagActions(ArrayList<Flag> allFlags, HashMap<String, IFlagAction> flagActions) {
 		for(Flag f: allFlags){
+			System.out.println(f.getFlagname()+f.getFlagvalue());
 			IFlagAction flagAction = flagActions.getOrDefault(f.getFlagname(),new NullFlagAction());
 			flagAction.execute(f);
 		}

@@ -6,7 +6,7 @@ public class NullFlagAction implements IFlagAction {
 
 	@Override
 	public void execute(Flag flag) {
-		System.out.println("NullFlagAction.execute()");
+
 	}
 
 }

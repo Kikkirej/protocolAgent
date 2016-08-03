@@ -33,4 +33,6 @@ public class PropertyKeys {
 	public static final String TIMEFORMAT = "timeFormat";
 	
 	public static final String PATHTOSAVEDLOGS= "pathToSavedLogs";
+	
+	public static final String BACKGROUNDMODE= "backgroundMode";
 }

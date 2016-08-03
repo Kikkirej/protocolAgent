@@ -2,6 +2,7 @@ package net.kikkirej.protocolagent;
 
 import net.kikkirej.protocolagent.flags.FlagInterpreter;
 import net.kikkirej.protocolagent.options.screen.OptionsScreen;
+import net.kikkirej.protocolagent.properties.PropertyKeys;
 import net.kikkirej.protocolagent.properties.PropertyManager;
 
 public class ProtocolAgent {
@@ -17,18 +18,11 @@ public class ProtocolAgent {
 		if(args.length > 0){
 			FlagInterpreter flagInterpreter = new FlagInterpreter();
 			flagInterpreter.interpretArgs(args);
+		}
+		if(PropertyManager.getInstance().get(PropertyKeys.BACKGROUNDMODE).equals("true")){
+			//TODO Backgroundmode implementieren.
 		}else{
 			new OptionsScreen();
 		}
 	}
-
-	private void initalize(String[] args) {
-		if(args[0].equals("-c")){
-			PropertyManager propertyManager = PropertyManager.getInstance();
-			propertyManager.setPropertyPath(args[1]);
-		} else if(args[0].equals("-h")){
-			//TODO implement help Dialog...
-		}
-	}
-	
 }

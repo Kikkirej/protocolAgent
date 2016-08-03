@@ -56,7 +56,6 @@ public class FlagInterpreter {
 
 	private void executeFlagActions(ArrayList<Flag> allFlags, HashMap<String, IFlagAction> flagActions) {
 		for(Flag f: allFlags){
-			System.out.println(f.getFlagname()+f.getFlagvalue());
 			IFlagAction flagAction = flagActions.getOrDefault(f.getFlagname(),new NullFlagAction());
 			flagAction.execute(f);
 		}

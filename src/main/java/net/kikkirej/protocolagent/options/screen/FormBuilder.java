@@ -78,7 +78,11 @@ public class FormBuilder {
 		String pathToCategories = propertyManager.get(PropertyKeys.CATEGORYPATH);
 		comboBox.addItem("");
 		try {
-			FileReader fileReader = new FileReader(new File(pathToCategories));
+			File categoryFile = new File(pathToCategories);
+			if(!categoryFile.exists()){
+				categoryFile.createNewFile();
+			}
+			FileReader fileReader = new FileReader(categoryFile);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 	        List<String> lines = new ArrayList<String>();
 	        String line = null;

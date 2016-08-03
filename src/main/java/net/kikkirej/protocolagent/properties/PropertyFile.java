@@ -1,13 +1,16 @@
 package net.kikkirej.protocolagent.properties;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 public class PropertyFile extends File {
 
@@ -35,9 +38,13 @@ public class PropertyFile extends File {
 	}
 	
 	public static PropertyFile initFile(String pathToFile) throws IOException{
-		URL resource = PropertyFile.class.getResource("/net/kikkirej/protocolagent/properties/propertiesModel.ini");
-		String filePath = resource.getFile();
-		PropertyFile propertyTemplateFile = new PropertyFile(filePath);
+		InputStream resourceAsStream = PropertyFile.class.getResourceAsStream("/net/kikkirej/protocolagent/properties/propertiesModel.ini");
+		final File tempFile = File.createTempFile("protcolAgentModel", ".ini");
+        tempFile.deleteOnExit();
+        try (FileOutputStream out = new FileOutputStream(tempFile)) {
+            IOUtils.copy(resourceAsStream, out);
+        }
+		PropertyFile propertyTemplateFile = new PropertyFile(tempFile.getAbsolutePath());
 		PropertyFile propertyFile = new PropertyFile(pathToFile);
 		FileUtils.copyFile(propertyTemplateFile, propertyFile);
 		return propertyFile;

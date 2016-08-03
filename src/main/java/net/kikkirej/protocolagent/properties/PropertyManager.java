@@ -1,8 +1,12 @@
 package net.kikkirej.protocolagent.properties;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.Properties;
+
+import org.apache.commons.io.IOUtils;
 
 /**
  * Verwaltet alle Einstellungen der Anwendung.
@@ -38,8 +42,13 @@ public final class PropertyManager {
 	
 	private void loadDefaultProperties() {
 		try {
-			URL defaultPropertyFile = PropertyManager.class.getResource("/net/kikkirej/protocolagent/properties/defaultProperties.ini");
-			properties = new PropertyFile(defaultPropertyFile.getFile()).loadProperties(properties);
+			InputStream resourceAsStream = PropertyManager.class.getResourceAsStream("/net/kikkirej/protocolagent/properties/defaultProperties.ini");
+			final File tempFile = File.createTempFile("protocolAgentDefault", ".ini");
+	        tempFile.deleteOnExit();
+	        try (FileOutputStream out = new FileOutputStream(tempFile)) {
+	            IOUtils.copy(resourceAsStream, out);
+	        }
+			properties = new PropertyFile(tempFile.getAbsolutePath()).loadProperties(properties);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

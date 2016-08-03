@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -99,8 +100,19 @@ public class FormBuilder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		setDefaultCategory(comboBox);
 	}
 
+	private void setDefaultCategory(JComboBox<String> comboBox) {
+		String defaultCategory = propertyManager.get(PropertyKeys.DEFAULTCATEGORY);
+		ComboBoxModel<String> model = comboBox.getModel();
+		for (int i = 0; i < model.getSize(); i++) {
+			String categoryElement = model.getElementAt(i);
+			if(categoryElement.replace(" ", "").equals(defaultCategory.replace(" ", ""))){
+				model.setSelectedItem(categoryElement);
+			}
+		}
+	}
 	/**
 	 * loads the elements
 	 * @return

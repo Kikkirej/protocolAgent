@@ -35,4 +35,6 @@ public class PropertyKeys {
 	public static final String PATHTOSAVEDLOGS= "pathToSavedLogs";
 	
 	public static final String BACKGROUNDMODE= "backgroundMode";
+	
+	public static final String DEFAULTCATEGORY= "defaultCategory";
 }

@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
+import net.kikkirej.protocolagent.options.Value;
 import net.kikkirej.protocolagent.properties.PropertyKeys;
 import net.kikkirej.protocolagent.properties.PropertyManager;
 

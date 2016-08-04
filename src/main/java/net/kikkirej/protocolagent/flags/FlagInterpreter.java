@@ -11,7 +11,7 @@ import net.kikkirej.protocolagent.flags.flagactions.NullFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.ValueFlagAction;
 
 public class FlagInterpreter {
-	private static final String REGEXFLAG = "[-,/][a-z,A-Z]";
+	private static final String REGEXFLAG = "[-,/][a-z,A-Z]{4}";
 
 	public void interpretArgs(String[] args){
 		ArrayList<Flag> allFlags = getAllFlags(args);

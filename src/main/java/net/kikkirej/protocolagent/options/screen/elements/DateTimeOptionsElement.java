@@ -8,8 +8,8 @@ import net.kikkirej.protocolagent.options.screen.listener.OptionElementChangedLi
 
 public class DateTimeOptionsElement extends OptionsElement {
 
-	public DateTimeOptionsElement(String bezeichner) {
-		super(bezeichner);
+	public DateTimeOptionsElement(String name) {
+		super(name);
 		// TODO Auto-generated constructor stub
 	}
 

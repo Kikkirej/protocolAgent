@@ -8,8 +8,8 @@ import net.kikkirej.protocolagent.options.screen.listener.OptionElementChangedLi
 
 public class TextAreaOptionsElement extends OptionsElement {
 
-	public TextAreaOptionsElement(String bezeichner) {
-		super(bezeichner);
+	public TextAreaOptionsElement(String name) {
+		super(name);
 		// TODO Auto-generated constructor stub
 	}
 

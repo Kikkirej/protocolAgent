@@ -35,13 +35,15 @@ public class FormBuilder {
 	}
 	/**
 	 * fills the frame
+	 * @return 
 	 */
-	public void build() {
+	public Value[] build() {
 		OptionsElement[] optionsElements = getOptionsElements();
 		Value valueCategoryField = initCategoryField();
 		Value[] valuesOfTheOptions = fillOptionsElementsInFrame(optionsElements);
 		valuesOfTheOptions[0] = valueCategoryField;
 		createFinalButtons(valuesOfTheOptions);
+		return valuesOfTheOptions;
 	}
 
 	private void createFinalButtons(Value[] values) {
@@ -76,15 +78,10 @@ public class FormBuilder {
 	}
 
 	private void fillComboBox(JComboBox<String> comboBox) {
-		String pathToCategories = propertyManager.get(PropertyKeys.CATEGORYPATH);
+		
 		comboBox.addItem("");
 		try {
-			File categoryFile = new File(pathToCategories);
-			if(!categoryFile.exists()){
-				categoryFile.createNewFile();
-			}
-			FileReader fileReader = new FileReader(categoryFile);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			BufferedReader bufferedReader = readCategoryFile();
 	        List<String> lines = new ArrayList<String>();
 	        String line = null;
 	        while ((line = bufferedReader.readLine()) != null) {
@@ -101,6 +98,16 @@ public class FormBuilder {
 			e.printStackTrace();
 		}
 		setDefaultCategory(comboBox);
+	}
+	private BufferedReader readCategoryFile() throws IOException, FileNotFoundException {
+		String pathToCategories = propertyManager.get(PropertyKeys.CATEGORYPATH);
+		File categoryFile = new File(pathToCategories);
+		if(!categoryFile.exists()){
+			categoryFile.createNewFile();
+		}
+		FileReader fileReader = new FileReader(categoryFile);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		return bufferedReader;
 	}
 
 	private void setDefaultCategory(JComboBox<String> comboBox) {

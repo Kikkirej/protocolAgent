@@ -1,4 +1,4 @@
-package net.kikkirej.protocolagent.options.csv;
+package net.kikkirej.protocolagent.options.output;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,12 +9,16 @@ import net.kikkirej.protocolagent.options.Value;
 import net.kikkirej.protocolagent.properties.PropertyKeys;
 import net.kikkirej.protocolagent.properties.PropertyManager;
 
-public class CSVUtil {
+public class CSVOutput implements IOutput {
 
 	private static final String A = "\"";
 	private static final String T = ";";
 	private static final String ATA = A+T+A;
 	
+	/* (non-Javadoc)
+	 * @see net.kikkirej.protocolagent.options.csv.IOutput#writeValue(net.kikkirej.protocolagent.options.Value[])
+	 */
+	@Override
 	public void writeValue(Value[] values) throws IOException {
 		String pathToProtocolFile = getPathToProtocolFile(values);
 		File protocolFile = new File(pathToProtocolFile);
@@ -34,7 +38,6 @@ public class CSVUtil {
 		return valueString;
 	}
 
-	@Deprecated
 	private void writeLineToProtocolFile(String generatedCSVHeader, File protocolFile) throws IOException {
 		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(protocolFile, true));
 		bufferedWriter.append(generatedCSVHeader +"\n");

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.kikkirej.protocollagent</groupId>
-	<artifactId>ProtocollAgent</artifactId>
+	<artifactId>ProtocolAgent</artifactId>
 	<version>1.0.2-SNAPSHOT</version>
 	<organization>
 		<url>Kikkirej.net</url>
@@ -27,6 +27,7 @@
 	</scm>
 	<issueManagement>
 		<url>https://github.com/Kikkirej/protocolAgent/issues</url>
+		<system>Github</system>
 	</issueManagement>
 	<build>
 		<plugins>

@@ -7,12 +7,13 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import net.kikkirej.protocolagent.options.Value;
-import net.kikkirej.protocolagent.options.csv.CSVUtil;
+import net.kikkirej.protocolagent.options.output.CSVOutput;
+import net.kikkirej.protocolagent.options.output.IOutput;
 
 public class SaveEvent implements ActionListener {
 
 	private Value[] values;
-	private CSVUtil csvUtil;
+	private IOutput csvUtil;
 
 	public SaveEvent(Value[] values) {
 		this.values = values;
@@ -31,7 +32,7 @@ public class SaveEvent implements ActionListener {
 	}
 
 	private void writeToFile() {
-		csvUtil = new CSVUtil();
+		csvUtil = new CSVOutput();
 			try {
 				csvUtil.writeValue(values);
 			} catch (IOException e1) {

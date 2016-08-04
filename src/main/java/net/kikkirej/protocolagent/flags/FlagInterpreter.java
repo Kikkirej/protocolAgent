@@ -3,6 +3,7 @@ package net.kikkirej.protocolagent.flags;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import net.kikkirej.protocolagent.flags.flagactions.GreenyFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.CategoryFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.ConfFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.HelpFlagAction;
@@ -53,6 +54,7 @@ public class FlagInterpreter {
 		flagActions.put("h", new HelpFlagAction());
 		flagActions.put("v", new ValueFlagAction());
 		flagActions.put("k", new CategoryFlagAction());
+		flagActions.put("grün", new GreenyFlagAction());
 		return flagActions;
 	}
 

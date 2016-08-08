@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.kikkirej.protocollagent</groupId>
 	<artifactId>ProtocolAgent</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<organization>
 		<url>Kikkirej.net</url>
 		<name>Kikkirej.net</name>

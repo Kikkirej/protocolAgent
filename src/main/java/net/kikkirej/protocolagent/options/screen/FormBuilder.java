@@ -150,9 +150,19 @@ public class FormBuilder {
 		String[] splittedDefaultValues = defaultFieldValues.split(";");
 		for (int i = 0; i < splittedDefaultValues.length; i++) {
 			String[] singleField = splittedDefaultValues[i].split(":");
-			setDefaultValueForField(singleField[0], singleField[1], optionsElements);
+			String value = getCompleteValueAfterColon(singleField);
+			setDefaultValueForField(singleField[0], value, optionsElements);
 		}
 		
+	}
+	
+	private String getCompleteValueAfterColon(String[] singleField){
+		String value= "";
+		for (int i = 1; i < singleField.length; i++) {
+			value += singleField[i] + ":";
+		}
+		value = value.substring(0, value.length()-1);
+		return value;
 	}
 
 	private void setDefaultValueForField(String fieldName, String defaultValue, OptionsElement[] optionsElements) {

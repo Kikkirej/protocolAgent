@@ -44,7 +44,7 @@ public class FlagInterpreter {
 				return flag;
 			}
 		}
-		flag.setFlagvalue(flagvalue);;
+		flag.setFlagvalue(flagvalue);
 		return flag;
 	}
 
@@ -52,7 +52,9 @@ public class FlagInterpreter {
 		HashMap<String, IFlagAction> flagActions = new HashMap<>();
 		flagActions.put("c", new ConfFlagAction());
 		flagActions.put("h", new HelpFlagAction());
-		flagActions.put("v", new ValueFlagAction());
+		ValueFlagAction valueFlagAction = new ValueFlagAction();
+		flagActions.put("v", valueFlagAction);
+		flagActions.put("dv", valueFlagAction);
 		flagActions.put("k", new CategoryFlagAction());
 		flagActions.put("gruen", new GreenyFlagAction());
 		return flagActions;

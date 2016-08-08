@@ -12,7 +12,7 @@ import net.kikkirej.protocolagent.flags.flagactions.NullFlagAction;
 import net.kikkirej.protocolagent.flags.flagactions.ValueFlagAction;
 
 public class FlagInterpreter {
-	private static final String REGEXFLAG = "[-,/][a-z,A-Z]{4}";
+	private static final String REGEXFLAG = "[-,/][a-z,A-Z]{1,5}";
 
 	public void interpretArgs(String[] args){
 		ArrayList<Flag> allFlags = getAllFlags(args);
@@ -54,7 +54,7 @@ public class FlagInterpreter {
 		flagActions.put("h", new HelpFlagAction());
 		flagActions.put("v", new ValueFlagAction());
 		flagActions.put("k", new CategoryFlagAction());
-		flagActions.put("grün", new GreenyFlagAction());
+		flagActions.put("gruen", new GreenyFlagAction());
 		return flagActions;
 	}
 

@@ -9,12 +9,13 @@ public class ProtocolAgent {
 
 	/**
 	 * Main-Method, here starts everything.
-	 * <b>Flags</b>
-	 * -c [Path]	Settings
-	 * -h			Help
-	 * @param args User-Arguments.(Supported Argument is the Path to the *.ini.)
+	 * @param args User-Arguments.(Supported Arguments are in the wiki on Github.)
 	 */
 	public static void main(String[] args) {
+		new ProtocolAgent().run(args);
+	}
+
+	private void run(String[] args) {
 		if(args.length > 0){
 			FlagInterpreter flagInterpreter = new FlagInterpreter();
 			flagInterpreter.interpretArgs(args);

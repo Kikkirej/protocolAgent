@@ -3,13 +3,7 @@ package net.kikkirej.protocolagent.flags;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import net.kikkirej.protocolagent.flags.flagactions.GreenyFlagAction;
-import net.kikkirej.protocolagent.flags.flagactions.CategoryFlagAction;
-import net.kikkirej.protocolagent.flags.flagactions.ConfFlagAction;
-import net.kikkirej.protocolagent.flags.flagactions.HelpFlagAction;
-import net.kikkirej.protocolagent.flags.flagactions.IFlagAction;
-import net.kikkirej.protocolagent.flags.flagactions.NullFlagAction;
-import net.kikkirej.protocolagent.flags.flagactions.ValueFlagAction;
+import net.kikkirej.protocolagent.flags.flagactions.*;
 
 public class FlagInterpreter {
 	private static final String REGEXFLAG = "[-,/][a-z,A-Z]{1,5}";

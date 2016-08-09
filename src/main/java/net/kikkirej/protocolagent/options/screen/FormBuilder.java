@@ -68,8 +68,8 @@ public class FormBuilder {
 		String categoryLabel = propertyManager.get(PropertyKeys.CATEGORYLABEL);
 		JLabel label = new JLabel(categoryLabel + "*:");
 		JComboBox<String> comboBox = new JComboBox<>();
-		fillComboBox(comboBox);
 		Value value = new Value("", categoryLabel);
+		fillComboBox(comboBox, value);
 		value.setNeededValue(true);
 		comboBox.addActionListener(new CategoryChangedListener(comboBox, value));
 		frame.add(label);
@@ -77,7 +77,7 @@ public class FormBuilder {
 		return value;
 	}
 
-	private void fillComboBox(JComboBox<String> comboBox) {
+	private void fillComboBox(JComboBox<String> comboBox, Value value) {
 		
 		comboBox.addItem("");
 		try {
@@ -98,6 +98,10 @@ public class FormBuilder {
 			e.printStackTrace();
 		}
 		setDefaultCategory(comboBox);
+		String comboBoxSelection = comboBox.getSelectedItem().toString();
+		if(!comboBoxSelection.isEmpty()){
+			value.setValue(comboBoxSelection);
+		}
 	}
 	private BufferedReader readCategoryFile() throws IOException, FileNotFoundException {
 		String pathToCategories = propertyManager.get(PropertyKeys.CATEGORYPATH);

@@ -3,17 +3,23 @@ package net.kikkirej.protocolagent.options.suggestions;
 import java.util.ArrayList;
 
 public class SuggestionCollection {
-	ArrayList<Suggestion> suggestions = new ArrayList<>();
+	private ArrayList<Suggestion> suggestions = new ArrayList<>();
 	private Integer count;
-	public SuggestionCollection() {
+	private String feldName;
+	public String getFeldName() {
+		return feldName;
+	}
+
+	public SuggestionCollection(String feldName) {
+		this.feldName = feldName;
 		count = 5;
 	}
 	
-	private void addSuggestion(Suggestion suggestion){
+	public void addSuggestion(Suggestion suggestion){
 		suggestions.add(suggestion);
 	}
 	
-	private void setCount(Integer count){
+	public void setCount(Integer count){
 		this.count = count;
 	}
 }

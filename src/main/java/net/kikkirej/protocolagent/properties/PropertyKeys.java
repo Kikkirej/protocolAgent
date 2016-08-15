@@ -37,4 +37,10 @@ public class PropertyKeys {
 	public static final String BACKGROUNDMODE= "backgroundMode";
 	
 	public static final String DEFAULTCATEGORY= "defaultCategory";
+	
+	public static final String SUGGESTIONMOD= "suggestionMod";
+	
+	public static final String SUGGESTIONSIZE= "suggestionSize";
+	
+	public static final String SUGGESTIONPATH= "suggestionPath";
 }

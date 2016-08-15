@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 
 import net.kikkirej.protocolagent.options.Value;
 import net.kikkirej.protocolagent.options.screen.defaultvalues.DefaultValues;
+import net.kikkirej.protocolagent.options.suggestions.SuggestionCollection;
 
 public abstract class OptionsElement {
 
@@ -12,6 +13,7 @@ public abstract class OptionsElement {
 	protected String defaultValue;
 	protected Boolean isNeeded;
 	protected JFrame frame;
+	protected SuggestionCollection suggestionCollection;
 
 	public OptionsElement(String bezeichner) {
 		this.name = bezeichner;
@@ -45,5 +47,9 @@ public abstract class OptionsElement {
 
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
+	}
+
+	public void setSuggestionCollection(SuggestionCollection suggestionCollection) {
+		this.suggestionCollection = suggestionCollection;
 	}
 }

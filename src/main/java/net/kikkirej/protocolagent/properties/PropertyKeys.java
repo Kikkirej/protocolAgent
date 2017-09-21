@@ -43,4 +43,11 @@ public class PropertyKeys {
 	public static final String SUGGESTIONSIZE= "suggestionSize";
 	
 	public static final String SUGGESTIONPATH= "suggestionPath";
+	
+	/*
+	 * Followingtasks
+	 */
+	public static final String FOLLOWINGTASK_ACTIVE = "followingtaskActive";
+	
+	public static final String FOLLOWINGTASK_COMMAND  = "followingtaskCommand";
 }

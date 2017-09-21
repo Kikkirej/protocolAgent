@@ -19,7 +19,7 @@ public class CSVOutput implements IOutput {
 	 * @see net.kikkirej.protocolagent.options.csv.IOutput#writeValue(net.kikkirej.protocolagent.options.Value[])
 	 */
 	@Override
-	public void writeValue(Value[] values) throws IOException {
+	public File writeValue(Value[] values) throws IOException {
 		String pathToProtocolFile = getPathToProtocolFile(values);
 		File protocolFile = new File(pathToProtocolFile);
 		if(!protocolFile.exists()){
@@ -27,6 +27,7 @@ public class CSVOutput implements IOutput {
 			writeLineToProtocolFile(generateCSVHeader(values),protocolFile);
 		}
 		writeLineToProtocolFile(generateCSVValues(values),protocolFile);
+		return protocolFile;
 	}
 
 	private String generateCSVValues(Value[] values) {
